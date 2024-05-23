@@ -38,10 +38,8 @@ spec:
         - ip: "127.0.0.1"
           hostnames:
             - "wso2apim"
-        - ip: "10.0.121.156"
-          hostnames:
-            - "apim.wso2.com"
-            - "gw.wso2.com"
+        hostAliases:
+        
       containers:
         - name: wso2apim
           image: docker.wso2.com/wso2am:4.0.0.289

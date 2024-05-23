@@ -180,7 +180,7 @@ spec:
                   value: gw.wso2.com
             periodSeconds: 5
       imagePullSecrets:
-        - name: customsecret
+        - name: regcred
       volumes:
         - name: router-keystore-vol
           secret:

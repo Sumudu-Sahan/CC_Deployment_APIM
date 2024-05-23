@@ -30,6 +30,11 @@ spec:
       labels:
         app: choreo-connect-deployment
     spec:
+      hostAliases:
+        - ip: "20.197.113.209"
+          hostnames:
+            - "apim.wso2.com"
+            - "gw.wso2.com"
       containers:
         - name: choreo-connect-enforcer
           volumeMounts:

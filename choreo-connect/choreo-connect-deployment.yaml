@@ -44,8 +44,6 @@ spec:
               name: dropins-vol
           image: docker.wso2.com/choreo-connect-enforcer:1.0.0.23
           imagePullPolicy: IfNotPresent
-      imagePullSecrets:
-        - name: regcred
           env:
             - name: ENFORCER_PRIVATE_KEY_PATH
               value: "/home/wso2/security/keystore/mg.key"
@@ -112,8 +110,6 @@ spec:
               name: router-truststore-vol
           image: docker.wso2.com/choreo-connect-router:1.0.0.23
           imagePullPolicy: IfNotPresent
-      imagePullSecrets:
-        - name: regcred
           env:
             - name: ROUTER_ADMIN_HOST
               value: "0.0.0.0"
@@ -183,6 +179,8 @@ spec:
                 - name: Host
                   value: gw.wso2.com
             periodSeconds: 5
+      imagePullSecrets:
+        - name: regcred
       volumes:
         - name: router-keystore-vol
           secret:

@@ -41,8 +41,6 @@ spec:
       containers:
         - name: wso2apim
           image: docker.wso2.com/wso2am:4.0.0.289
-          imagePullSecrets:
-            - name: regcred
           resources:
             limits:
               memory: "2Gi"
@@ -89,6 +87,8 @@ spec:
           volumeMounts:
             - name: apim-conf
               mountPath: /home/wso2carbon/wso2-config-volume/repository/conf
+      imagePullSecrets:
+        - name: regcred
       volumes:
         - name: apim-conf
           configMap:

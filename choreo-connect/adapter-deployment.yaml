@@ -79,7 +79,7 @@ spec:
             initialDelaySeconds: 8
             periodSeconds: 5
       imagePullSecrets:
-        - name: customsecret
+        - name: regcred
       volumes:
         - name: adapter-keystore-vol
           secret:

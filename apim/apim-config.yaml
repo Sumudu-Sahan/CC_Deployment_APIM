@@ -82,22 +82,6 @@ data:
     websub_event_receiver_http_endpoint = "http://localhost:9021"
     websub_event_receiver_https_endpoint = "https://localhost:8021"
 
-    [[apim.gateway.environment]]
-    name = "Choreo_Connect"
-    type = "hybrid"
-    display_in_api_console = true
-    description = "Choreo Connect GW"
-    show_as_token_endpoint_url = true
-    service_url = "https://apim.wso2.com:${mgt.transport.https.port}/services/"
-    username= "${admin.username}"
-    password= "${admin.password}"
-    ws_endpoint = "ws://apim.wso2.com:9099"
-    wss_endpoint = "wss://apim.wso2.com:8099"
-    http_endpoint = "http://apim.wso2.com:9090"
-    https_endpoint = "https://apim.wso2.com:9095"
-    websub_event_receiver_http_endpoint = "http://apim.wso2.com:9021"
-    websub_event_receiver_https_endpoint = "https://apim.wso2.com:8021"
-
     [apim.sync_runtime_artifacts.gateway]
     gateway_labels =["Default"]
     enable = false
@@ -135,7 +119,7 @@ data:
     auth_token = ""
 
     [apim.key_manager]
-    service_url = "https://localhost:9443/services/"
+    service_url = "https://wso2apim:9443/services/"
     #username = "$ref{super_admin.username}"
     #password = "$ref{super_admin.password}"
     #pool.init_idle_capacity = 50
@@ -143,12 +127,6 @@ data:
     #key_validation_handler_type = "default"
     #key_validation_handler_type = "custom"
     #key_validation_handler_impl = "org.wso2.carbon.apimgt.keymgt.handlers.DefaultKeyValidationHandler"
-
-    [apim.idp]
-    server_url = "https://apim.wso2.com"
-    authorize_endpoint = "https://apim.wso2.com/oauth2/authorize"
-    oidc_logout_endpoint = "https://apim.wso2.com/oidc/logout"
-    oidc_check_session_endpoint = "https://apim.wso2.com/oidc/checksession"
 
     #[apim.idp]
     #server_url = "https://localhost:${mgt.transport.https.port}"

@@ -49,6 +49,8 @@ spec:
               name: logconfig-toml-vol
           image: docker.wso2.com/choreo-connect-adapter:1.0.0.23
           imagePullPolicy: IfNotPresent
+      imagePullSecrets:
+        - name: regcred
           env:
             - name: ADAPTER_PRIVATE_KEY_PATH
               value: "/home/wso2/security/keystore/mg.key"

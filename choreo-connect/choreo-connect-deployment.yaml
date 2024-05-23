@@ -227,10 +227,10 @@ spec:
               cpu: "1000m"
           ports:
             - containerPort: 9000
-            - containerPort: 9095
+            - containerPort: 9099
           startupProbe:
             httpGet:
-              port: 9095
+              port: 9099
               path: /ready
               scheme: HTTPS
               httpHeaders:
@@ -240,7 +240,7 @@ spec:
             periodSeconds: 5
           livenessProbe:
             httpGet:
-              port: 9095
+              port: 9099
               path: /health
               scheme: HTTPS
               httpHeaders:
@@ -249,7 +249,7 @@ spec:
             periodSeconds: 10
           readinessProbe:
             httpGet:
-              port: 9095
+              port: 9099
               path: /ready
               scheme: HTTPS
               httpHeaders:

@@ -43,9 +43,11 @@ spec:
           image: docker.wso2.com/wso2am:4.0.0.289
           resources:
             limits:
-              memory: "2Gi"
+              memory: "4Gi"
+              cpu: "2000m"
             requests:
-              memory: "2Gi"
+              memory: "4Gi"
+              cpu: "2000m"
           startupProbe:
             exec:
               command:
@@ -88,7 +90,7 @@ spec:
             - name: apim-conf
               mountPath: /home/wso2carbon/wso2-config-volume/repository/conf
       imagePullSecrets:
-        - name: regcred
+        - name: customcred
       volumes:
         - name: apim-conf
           configMap:

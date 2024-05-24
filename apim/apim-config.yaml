@@ -82,22 +82,6 @@ data:
     websub_event_receiver_http_endpoint = "http://localhost:9021"
     websub_event_receiver_https_endpoint = "https://localhost:8021"
 
-    [[apim.gateway.environment]]
-    name = "Choreo_Connect"
-    type = "hybrid"
-    display_in_api_console = true
-    description = "Choreo Connect GW"
-    show_as_token_endpoint_url = true
-    service_url = "https://apim.wso2.com:${mgt.transport.https.port}/services/"
-    username= "${admin.username}"
-    password= "${admin.password}"
-    ws_endpoint = "ws://apim.wso2.com:9099"
-    wss_endpoint = "wss://apim.wso2.com:8099"
-    http_endpoint = "http://apim.wso2.com:9090"
-    https_endpoint = "https://apim.wso2.com:9095"
-    websub_event_receiver_http_endpoint = "http://apim.wso2.com:9021"
-    websub_event_receiver_https_endpoint = "https://apim.wso2.com:8021"
-
     [apim.sync_runtime_artifacts.gateway]
     gateway_labels =["Default"]
     enable = false

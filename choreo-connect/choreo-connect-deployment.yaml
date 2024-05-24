@@ -21,7 +21,7 @@ kind: Deployment
 metadata:
   name: choreo-connect-deployment
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: choreo-connect-deployment
@@ -58,7 +58,7 @@ spec:
             - name: ADAPTER_XDS_PORT
               value: "18000"
             - name: ENFORCER_LABEL
-              value: "Choreo_Connect"
+              value: "Default"
             - name: ENFORCER_REGION
               value: "UNKNOWN"
             - name: XDS_MAX_MSG_SIZE
@@ -118,7 +118,7 @@ spec:
             - name: ROUTER_CLUSTER
               value: "default_cluster"
             - name: ROUTER_LABEL
-              value: "Choreo_Connect"
+              value: "Default"
             - name: ROUTER_PRIVATE_KEY_PATH
               value: "/home/wso2/security/keystore/mg.key"
             - name: ROUTER_PUBLIC_CERT_PATH
@@ -180,7 +180,7 @@ spec:
                   value: gw.wso2.com
             periodSeconds: 5
       imagePullSecrets:
-        - name: regcred
+        - name: customcred
       volumes:
         - name: router-keystore-vol
           secret:

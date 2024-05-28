@@ -1,0 +1,186 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: jmeter-test-script
+data:
+  backend_throttling_load_test_v1.jmx: |
+    <?xml version="1.0" encoding="UTF-8"?>
+    <jmeterTestPlan version="1.2" properties="5.0" jmeter="5.5">
+      <hashTree>
+        <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan" enabled="true">
+          <stringProp name="TestPlan.comments"></stringProp>
+          <boolProp name="TestPlan.functional_mode">false</boolProp>
+          <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
+          <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+          <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="TestPlan.user_define_classpath"></stringProp>
+        </TestPlan>
+        <hashTree>
+          <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group" enabled="true">
+            <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+            <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+              <boolProp name="LoopController.continue_forever">false</boolProp>
+              <intProp name="LoopController.loops">-1</intProp>
+            </elementProp>
+            <stringProp name="ThreadGroup.num_threads">12</stringProp>
+            <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+            <boolProp name="ThreadGroup.scheduler">true</boolProp>
+            <stringProp name="ThreadGroup.duration">900</stringProp>
+            <stringProp name="ThreadGroup.delay"></stringProp>
+            <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+          </ThreadGroup>
+          <hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request" enabled="true">
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+                <collectionProp name="Arguments.arguments"/>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">gw.wso2.com</stringProp>
+              <stringProp name="HTTPSampler.port">443</stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/test/1.0.0</stringProp>
+              <stringProp name="HTTPSampler.method">GET</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">Authorization</stringProp>
+                    <stringProp name="Header.value">Bearer eyJ4NXQiOiJOVGRtWmpNNFpEazNOalkwWXpjNU1tWm1PRGd3TVRFM01XWXdOREU1TVdSbFpEZzROemM0WkEiLCJraWQiOiJNell4TW1Ga09HWXdNV0kwWldObU5EY3hOR1l3WW1NNFpUQTNNV0kyTkRBelpHUXpOR00wWkdSbE5qSmtPREZrWkRSaU9URmtNV0ZoTXpVMlpHVmxOZ19SUzI1NiIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiJhZG1pbiIsImF1dCI6IkFQUExJQ0FUSU9OIiwiYXVkIjoiZDJ6U0gzQkx6dkRIWVZXR29TT1FmQlJQZnJjYSIsIm5iZiI6MTcxNjg5NTAxMSwiYXpwIjoiZDJ6U0gzQkx6dkRIWVZXR29TT1FmQlJQZnJjYSIsInNjb3BlIjoiZGVmYXVsdCIsImlzcyI6Imh0dHBzOlwvXC9hcGltLndzbzIuY29tOjQ0M1wvb2F1dGgyXC90b2tlbiIsImV4cCI6MTcxNjg5ODYxMSwiaWF0IjoxNzE2ODk1MDExLCJqdGkiOiI0NjE2NjRiMy04OWY0LTRkZTEtODYwYS1jZjhlOGY1MmU3MGEifQ.Mxu-t_1u-PPJuaNl1sPGnzRsgku1ylxaE1byFKWDesT0rhu17eeR8O1DY4NRfha0peEvq_thhEnvAztlcciVjvi_j4FrhCTn-5FCoPbPdolxXlKgvoCKiLuyKwiECpFMh_AWolS6fUYRVtEHhqwDxbbEp30cbQcRJnWUiwXcOWQrIVH-_HPvJ0TXjyOvPCjA8WEvS2NNeuP24INWKeLbUbHp8cnVYWNYE7PmFiPMcIOj8p2RDLce4qtE0j1yaLOvXsu1ach1LaIO3Gch_MJsS4_vLmtfqII_cVh3yStHXgyTMCciorDf6NPjJG057QYKsLsohMNUIi_DMW5i2ZoXhQ</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+              <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="true">
+                <boolProp name="ResultCollector.error_logging">false</boolProp>
+                <objProp>
+                  <name>saveConfig</name>
+                  <value class="SampleSaveConfiguration">
+                    <time>true</time>
+                    <latency>true</latency>
+                    <timestamp>true</timestamp>
+                    <success>true</success>
+                    <label>true</label>
+                    <code>true</code>
+                    <message>true</message>
+                    <threadName>true</threadName>
+                    <dataType>true</dataType>
+                    <encoding>false</encoding>
+                    <assertions>true</assertions>
+                    <subresults>true</subresults>
+                    <responseData>false</responseData>
+                    <samplerData>false</samplerData>
+                    <xml>false</xml>
+                    <fieldNames>true</fieldNames>
+                    <responseHeaders>false</responseHeaders>
+                    <requestHeaders>false</requestHeaders>
+                    <responseDataOnError>false</responseDataOnError>
+                    <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+                    <assertionsResultsToSave>0</assertionsResultsToSave>
+                    <bytes>true</bytes>
+                    <sentBytes>true</sentBytes>
+                    <url>true</url>
+                    <threadCounts>true</threadCounts>
+                    <idleTime>true</idleTime>
+                    <connectTime>true</connectTime>
+                  </value>
+                </objProp>
+                <stringProp name="filename">/opt/apache-jmeter-5.5/test_case.jtl</stringProp>
+              </ResultCollector>
+              <hashTree/>
+            </hashTree>
+          </hashTree>
+          <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group" enabled="true">
+            <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+            <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+              <boolProp name="LoopController.continue_forever">false</boolProp>
+              <stringProp name="LoopController.loops">-1</stringProp>
+            </elementProp>
+            <stringProp name="ThreadGroup.num_threads">10</stringProp>
+            <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+            <boolProp name="ThreadGroup.scheduler">true</boolProp>
+            <stringProp name="ThreadGroup.duration">900</stringProp>
+            <stringProp name="ThreadGroup.delay"></stringProp>
+            <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+          </ThreadGroup>
+          <hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request" enabled="true">
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+                <collectionProp name="Arguments.arguments"/>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">gw.wso2.com</stringProp>
+              <stringProp name="HTTPSampler.port"></stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/sample/1.0.0</stringProp>
+              <stringProp name="HTTPSampler.method">GET</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">Authorization</stringProp>
+                    <stringProp name="Header.value">Bearer eyJ4NXQiOiJOVGRtWmpNNFpEazNOalkwWXpjNU1tWm1PRGd3TVRFM01XWXdOREU1TVdSbFpEZzROemM0WkEiLCJraWQiOiJNell4TW1Ga09HWXdNV0kwWldObU5EY3hOR1l3WW1NNFpUQTNNV0kyTkRBelpHUXpOR00wWkdSbE5qSmtPREZrWkRSaU9URmtNV0ZoTXpVMlpHVmxOZ19SUzI1NiIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiJhZG1pbiIsImF1dCI6IkFQUExJQ0FUSU9OIiwiYXVkIjoiTXc4dDZqMDVOcWJ0MjNMM254VzdtdVhDaUd3YSIsIm5iZiI6MTcxNjg5NDkyNywiYXpwIjoiTXc4dDZqMDVOcWJ0MjNMM254VzdtdVhDaUd3YSIsInNjb3BlIjoiZGVmYXVsdCIsImlzcyI6Imh0dHBzOlwvXC9hcGltLndzbzIuY29tOjQ0M1wvb2F1dGgyXC90b2tlbiIsImV4cCI6MTcxNjg5ODUyNywiaWF0IjoxNzE2ODk0OTI3LCJqdGkiOiI0Y2JiYTkxYi0wZjdkLTQ2YTktOWU0Ny04MWYzMTM5MDY3YTAifQ.shjry7swuBK-dzHIAn5WnwVKPHm_BrLL-56M1XQIW3ZUn1Fmx9cdQr-6q5lkFnkvFuL5X_WluMkpdHniATlf2ZW2zanvrE0ZrD0GYDjEn3th9g8iucmNPnc6xijmD4fG2ixBRqVGxuZBmsbVyOWKddhFCOPbKutfESCjuNNdXjTN-_U-FJ0T8iAm-XmGWJ7M963quVyd4lLqE5ko-A0l267zV5cUTXHVTQpAnXdPtxzgEuONFRnVJ1lUn-rvA_YPccr-2NwZQ2x-s4pi6qbhTw3F3WJks47DFZWZwpasnB-N9lkXLrbwT-g9SOOcFgsKTuJMWkbhMM0dwvrA5J2kgQ</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+              <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="true">
+                <boolProp name="ResultCollector.error_logging">false</boolProp>
+                <objProp>
+                  <name>saveConfig</name>
+                  <value class="SampleSaveConfiguration">
+                    <time>true</time>
+                    <latency>true</latency>
+                    <timestamp>true</timestamp>
+                    <success>true</success>
+                    <label>true</label>
+                    <code>true</code>
+                    <message>true</message>
+                    <threadName>true</threadName>
+                    <dataType>true</dataType>
+                    <encoding>false</encoding>
+                    <assertions>true</assertions>
+                    <subresults>true</subresults>
+                    <responseData>false</responseData>
+                    <samplerData>false</samplerData>
+                    <xml>false</xml>
+                    <fieldNames>true</fieldNames>
+                    <responseHeaders>false</responseHeaders>
+                    <requestHeaders>false</requestHeaders>
+                    <responseDataOnError>false</responseDataOnError>
+                    <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+                    <assertionsResultsToSave>0</assertionsResultsToSave>
+                    <bytes>true</bytes>
+                    <sentBytes>true</sentBytes>
+                    <url>true</url>
+                    <threadCounts>true</threadCounts>
+                    <idleTime>true</idleTime>
+                    <connectTime>true</connectTime>
+                  </value>
+                </objProp>
+                <stringProp name="filename">/opt/apache-jmeter-5.5/test_case2.jtl</stringProp>
+              </ResultCollector>
+              <hashTree/>
+            </hashTree>
+          </hashTree>
+        </hashTree>
+      </hashTree>
+    </jmeterTestPlan>
+

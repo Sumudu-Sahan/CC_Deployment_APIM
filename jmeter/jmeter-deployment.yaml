@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jmeter-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jmeter
+  template:
+    metadata:
+      labels:
+        app: jmeter
+    spec:
+      hostAliases:
+      - ip: "104.43.75.75"
+        hostnames:
+        - "apim.wso2.com"
+        - "gw.wso2.com"
+        - "go-mockoon.example.com"
+      containers:
+      - name: jmeter
+        image: justb4/jmeter:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 1099  # JMeter server port
+        - containerPort: 60000 # JMeter RMI port
+        resources:
+            requests:
+              memory: "2Gi"
+              cpu: "1"
+            limits:
+              memory: "3Gi"
+              cpu: "1"
+        volumeMounts:
+        - name: jmeter-test-script-volume
+          mountPath: /test-scripts
+        command: ["sh", "-c"]
+        args: ["jmeter -n -t /test-scripts/backend_throttling_load_test_v1.jmx && tail -f /dev/null"]
+      volumes:
+      - name: jmeter-test-script-volume
+        configMap:
+          name: jmeter-test-script

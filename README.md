@@ -2,14 +2,10 @@
 
 This README file provides instructions on how to set up and deploy Choreo Connect with API Manager and the Redis server for distributed caching, which is used for backend throttling and burst control, using the configurations provided in this repository.
 
-Furthermore, the following section provides instructions on how to perform the performance test on this deployment using the JMeter client deployed in the same Kubernetes cluster
-
-- [Conduct Performance Tests on Choreo Connect to Verify Backend Throttling and Burst Control Features](#Conduct Performance Tests on Choreo Connect to Verify Backend Throttling and Burst Control Features)
-
 ## Deployment Architecture
 
 
-![Diagram](/home/sajith-madhusanka/Downloads/setup.png)
+![Diagram](setup.png)
 
 ## Checkout the Repository
 

@@ -248,6 +248,11 @@ data:
     #persistent_notifier.ttl = 5000
     #persistent_notifier.username = "root"
     #persistent_notifier.password = "root"
+    
+    [apim.redis_config]
+    host = "redis-service"
+    port = 6379
+
 
     [[event_handler]]
     name="userPostSelfRegistration"

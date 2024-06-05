@@ -63,7 +63,17 @@ data:
         [[enforcer.throttling.publisher.URLGroup]]
           receiverURLs = ["tcp://wso2apim:9611"]
           authURLs = ["ssl://wso2apim:9711"]
-
+      [enforcer.throttling.localThrottler]
+        throttleFrequency = 1000
+        throttlingPoolSize = 1000
+        [enforcer.throttling.localThrottler.distributedCounter]
+         enabled = true
+         redisHost = "redis-service"
+         redisPort = 6379
+         redisUser = "default"
+         redisPass = "userpass"
+         gatewayID = "$env{GATEWAY_NODE_ID}"
+         minGatewayCount = 2
     [enforcer.security]
     [[enforcer.security.tokenService]]
       name = "Resident Key Manager"
@@ -98,6 +108,5 @@ data:
       skipSSLVerification = true
       [controlPlane.brokerConnectionParameters]
       eventListeningEndpoints = ["amqp://admin:$env{cp_admin_pwd}@wso2apim:5672?retries='10'&connectdelay='30'"]
-
     [analytics]
       enabled = false

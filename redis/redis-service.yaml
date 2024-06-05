@@ -3,11 +3,12 @@ kind: Service
 metadata:
   name: redis-service
 spec:
-  # label keys and values that must match in order to receive traffic for this service
   selector:
-    deployment: redis-service
+    app: redis
+  type: ClusterIP
   ports:
     # ports that this service should serve on
     - name: redis-service
       protocol: TCP
       port: 6379
+      targetPort: 6379

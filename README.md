@@ -104,6 +104,15 @@ Locate the `LoadBalancer` TYPE record and copy the value under the `EXTERNAL-IP`
 ```sh
 <EXTERNAL_IP> gw.wso2.com apim.wso2.com
 ```
+Furthermore, please update the `CC_Deployment_APIM/jmeter/two/jmeter-config-map.yaml` with the external IP address as shown below to add the /etc/hosts mapping to the JMeter deployment.
+```
+ hostAliases:
+      - ip: "<EXTERNAL_IP>"
+        hostnames:
+        - "apim.wso2.com"
+        - "gw.wso2.com"
+        - "go-mockoon.example.com"
+```
 
 ## Access the Portals
 
